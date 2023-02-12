@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "passphrase": "BFRyB94FRp7KWpq50QMAQFA5umeCycjQ"
+                }
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "render.com",
+            "connectString": "postgres://wdd340db:BFRyB94FRp7KWpq50QMAQFA5umeCycjQ@dpg-cf7eroda4992041d2q40-a.oregon-postgres.render.com/wdd340db"
+        }
+    ]
+}

@@ -5,6 +5,7 @@
 /* ***********************
  * Require Statements
  *************************/
+const baseController = require("./controllers/baseController")
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
@@ -23,12 +24,20 @@ app.set("layout", "./layouts/layout") // not at views root
  *************************/
 app.use(require("./routes/static"))
 
+
+// Inventory routes
+app.use("/inv", require("./routes/inventory-route"))
+
 //Index route
-app.get("/", function (req, res) {
-  res.render("index", {
-    title: "Home"
-  })
-})
+app.get("/", baseController.buildHome)
+
+// {
+//   res.render("index", {
+//     title: "Home"
+//   })
+// }
+
+
 
 /* ***********************
  * Local Server Information
