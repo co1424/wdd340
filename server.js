@@ -37,6 +37,8 @@ app.get("/", baseController.buildHome)
 //   })
 // }
 
+// Details route (I coded this part, so lets see how we do.)
+app.use("/detail/", require("./routes/inventory-route"))
 
 
 /* ***********************
