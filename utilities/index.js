@@ -31,4 +31,48 @@ Util.getNav = async function (req, res, next) {
     return nav
 }
 
+
+Util.getDetailedView = async function (inv_id) {
+    let data = await invModel.getVehicleByInventoryId(inv_id);
+    let detailedView = Util.buildDetailedView(data)
+    return detailedView
+}
+
+Util.buildDetailedView = async function (data) {
+    let vehicle = data[0]
+    let view = `
+    <h1 class="h1-detailed-view">${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h1>
+    <div class="vehicle-view">
+        
+        <hr>
+        <img class="car-photo" src="${vehicle.inv_image}" alt="vehicle-photo"></img> 
+        
+
+        <div class="car-info">
+        <h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2>
+
+                <p class="car-price">Price: $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}</p>
+                <p class="car-description">Description: ${vehicle.inv_description}</p>
+                <p>Color: ${vehicle.inv_color}</p>
+                <p>Miles: ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)}</p>
+                             
+        </div>
+                 
+        </div>
+    `
+    return view
+}
+
+// AddNewClassification Function:
+
+Util.AddNewClassification = async function () {
+    let data = await invModel.getVehicleByInventoryId(inv_id);
+    let detailedView = Util.buildDetailedView(data)
+    return detailedView
+
+}
+
+// AddNewVehicle Function:
+
+
 module.exports = Util

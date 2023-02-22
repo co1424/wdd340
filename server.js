@@ -5,11 +5,21 @@
 /* ***********************
  * Require Statements
  *************************/
-const baseController = require("./controllers/baseController")
-const express = require("express")
-const expressLayouts = require("express-ejs-layouts")
-const env = require("dotenv").config()
-const app = express()
+const baseController = require("./controllers/baseController");
+const express = require("express");
+const expressLayouts = require("express-ejs-layouts");
+const env = require("dotenv").config();
+const app = express();
+const bodyParser = require("body-parser");
+
+/* ***********************
+ * Middleware
+ *************************/
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+})) // for parsing application/x-www-form-urlencoded
+
 
 /* ***********************
  * View Engine and Templates
@@ -28,17 +38,15 @@ app.use(require("./routes/static"))
 // Inventory routes
 app.use("/inv", require("./routes/inventory-route"))
 
+
+
 //Index route
 app.get("/", baseController.buildHome)
 
-// {
-//   res.render("index", {
-//     title: "Home"
-//   })
-// }
+// Account-Client route:
+app.use("/client", require("./routes/account-route"))
 
-// Details route (I coded this part, so lets see how we do.)
-app.use("/detail/", require("./routes/inventory-route"))
+
 
 
 /* ***********************

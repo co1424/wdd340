@@ -7,6 +7,7 @@
 
 nav {
   display: flex;
+  flex-wrap: wrap;
   background-color: #242332;
   color: white;
   list-style: none;
@@ -228,6 +229,59 @@ footer {
   border-bottom: solid 3px #01B0D3;
   border-left: solid 3px #01B0D3;
 }
+
+/* ***************************************************** */
+/* ******************* DETAILED VIEW ******************* */
+/* ***************************************************** */
+
+.h1-detailed-view {
+  text-align: left;
+  padding-top: 20px;
+  padding-left: 5%;
+  margin-top: 0px;
+}
+
+.vehicle-view {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  padding: 5%;
+}
+
+.car-photo {
+  border: solid black 2px;
+  border-radius: 10%;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.car-info {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 1.2em;
+  padding: 5%;
+
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* ***************************************************** */
+/* ******************* MANAGEMENT VIEW ******************* */
+/* ***************************************************** */
+
+#newVehicleForm {
+  background-color: #0096CB;
+
+}
+
+input {
+  display: block;
+}
+
+
+
 
 /* ******************* MEDIA QUERIES ******************* */
 

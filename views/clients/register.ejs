@@ -1,0 +1,38 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
+
+<% if (message) { %>
+<p class="notice"><%= message %></p>
+<% } %>
+
+<div>
+
+    <form action="/client/register" method="post">
+        <label for="client_firstname">First Name *</label>
+        <input type="text" name="client_firstname" id="client_firstname" required>
+        <label for="client_lastname">Last Name *</label>
+        <input type="text" name="client_lastname" id="client_lastname" required>
+        <label for="client_email">Email *</label>
+        <input type="email" name="client_email" id="client_email" required>
+        <label for="client_password">Password *</label>
+        <input id="client_password" type="password" name="client_password" required
+            pattern="(?=^.{12,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+        <input type="submit" value="Register">
+        <!-- An element to toggle between password visibility -->
+        <input type="checkbox" onclick="togglePassword()">Show Password
+
+    </form>
+
+    <script>
+        function togglePassword() {
+            var x = document.getElementById("client_password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
+</div>

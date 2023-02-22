@@ -1,0 +1,45 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
+
+<% if (message) { %>
+<p class="notice"><%= message %></p>
+<% } %>
+
+<div>
+
+    <form action="/inventory/new-vehicle" id="newVehicleForm" method="post">
+        <label for="classification_name">Classification Name: *</label>
+        <select type="text" name="classification_name" id="classification_name" required> ${classification_name}
+        </select>
+        <label for="inv_make">Make *</label>
+        <input type="text" name="inv_make" id="inv_make" required>
+        <label for="inv_model">Model *</label>
+        <input type="text" name="inv_model" id="inv_model" required>
+        <br>
+        <label for="inv_description">Description *</label>
+        <textarea name="inv_description" id="inv_description" cols="40"
+            rows="5">Please enter the vehicle description</textarea>
+        <label for="inv_image">Image Path *</label>
+        <input type="inv_image" name="inv_image" id="inv_image" value="/images/vehicle/no-image.png" required>
+        <label for="inv_thumbnail">Thumbnail Path *</label>
+        <input type="inv_thumbnail" name="inv_thumbnail" id="inv_thumbnail" value="/images/vehicle/no-image.png"
+            required>
+        <label for="inv_price">Price *</label>
+        <input type="number" name="inv_price" id="inv_price" required>
+        <label for="inv_year">Year *</label>
+        <input type="num" name="inv_year" id="inv_year" required>
+        <label for="inv_miles">Miles</label>
+        <input type="number" name="inv_miles" id="inv_miles" required>
+        <label for="inv_color">Color</label>
+        <input type="text" name="inv_color" id="inv_color" required>
+
+        <input type="submit" value="Add Vehicle" id="button">
+
+
+
+    </form>
+
+
+
+</div>

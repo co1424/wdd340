@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS public.client (
 -- TABLES INFORMATION:
 -- Data for table 'classification'
 INSERT INTO public.classification (classification_name)
-VALUES ('Custum'),
+VALUES ('Custom'),
     ('Sport'),
     ('SUV'),
     ('Truck'),
