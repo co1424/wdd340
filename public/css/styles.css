@@ -224,11 +224,63 @@ figure #4 {
 
 footer {
   background-color: white;
-  padding: 20px;
+  padding: 5%;
   border-right: solid 3px #01B0D3;
   border-bottom: solid 3px #01B0D3;
   border-left: solid 3px #01B0D3;
+  padding-top: 0;
 }
+
+p.copyright {
+  margin: 0;
+  padding-top: 0;
+}
+
+/* ***************************************************** */
+/* ******************* CLASSIFICATION VIEW ******************* */
+/* ***************************************************** */
+
+
+.h1-classification-view {
+  text-align: left;
+  padding-top: 20px;
+  padding-left: 5%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+
+#classification-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10%;
+  border: solid 1px black;
+}
+
+#classification-vehicle-name-style {
+  text-align: center;
+
+}
+
+#classification-price {
+  display: block;
+  text-align: center;
+}
+
+ul #inv-display {
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+  background-color: #0096CB;
+}
+
+a:link {
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+
+
 
 /* ***************************************************** */
 /* ******************* DETAILED VIEW ******************* */
@@ -253,6 +305,7 @@ footer {
   border-radius: 10%;
   grid-column: 1;
   grid-row: 1;
+  margin: 10%;
 }
 
 .car-info {
@@ -271,8 +324,23 @@ ul {
 /* ******************* MANAGEMENT VIEW ******************* */
 /* ***************************************************** */
 
+#newClassificationForm {
+  background-color: #0dace6;
+  width: 400px;
+  padding: 5%;
+  margin: 5%;
+  border-radius: 2.5%;
+  border: solid black 1px;
+}
+
+
 #newVehicleForm {
-  background-color: #0096CB;
+  background-color: #0dace6;
+  width: 500px;
+  padding: 5%;
+  margin: 5%;
+  border-radius: 2.5%;
+  border: solid black 1px;
 
 }
 
@@ -280,11 +348,38 @@ input {
   display: block;
 }
 
+/* ***************************************************** */
+/* ******************* ACCOUNT VIEW ******************* */
+/* ***************************************************** */
+
+/* LOGIN FORM */
+
+#loginForm {
+  background-color: #0dace6;
+  width: 500px;
+  padding: 5%;
+  margin: 5%;
+  border-radius: 2.5%;
+  border: solid black 1px;
+}
+
+#registerForm {
+  background-color: #0dace6;
+  width: 500px;
+  padding: 5%;
+  margin: 5%;
+  border-radius: 2.5%;
+  border: solid black 1px;
+}
+
+/* REGISTER FORM */
 
 
 
 /* ******************* MEDIA QUERIES ******************* */
 
+
+/* MAIN */
 /* Medium Screen */
 @media screen and (min-width: 800px) {
   #content {
@@ -331,4 +426,29 @@ input {
     grid-row: 2;
     margin-top: 35px;
   }
+
+}
+
+
+
+/* DETAILED VIEW */
+
+.vehicle-view {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  padding: 5%;
+
+}
+
+.car-photo {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.car-info {
+  grid-column: 1;
+  grid-row: 2;
+
+
 }

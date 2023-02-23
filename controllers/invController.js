@@ -9,7 +9,8 @@ invCont.buildByClassification = async function (req, res, next) {
     const classificationId = req.params.classificationId;
     let data = await invModel.getVehiclesByClassificationId(classificationId)
     let nav = await utilities.getNav();
-    const className = data[0].classification_name
+    const className = data[0].classification_name;
+    console.log(className);
     res.render("./inventory/classification-view", {
         title: className + " vehicles",
         nav: nav,
@@ -63,11 +64,13 @@ invCont.buildNewClassification = async function (req, res, next) {
 
 invCont.buildNewVehicle = async function (req, res, next) {
     let nav = await utilities.getNav();
-
+    let dropdownMenu = await utilities.getDropdown();
     res.render('inventory/newVehicleForm', {
         title: 'Add New Vehicle',
         nav,
         message: null,
+        dropdownMenu,
+
     })
 }
 
@@ -112,15 +115,17 @@ invCont.AddNewClassification = async function (req, res, next) {
 
 invCont.AddNewVehicle = async function (req, res, next) {
     let nav = await utilities.getNav();
+
+
     const {
-        classification_name,
+        classification_id,
         inv_make,
         inv_model,
+        inv_year,
         inv_description,
         inv_image,
         inv_thumbnail,
         inv_price,
-        inv_year,
         inv_miles,
         inv_color
     } =
@@ -128,14 +133,14 @@ invCont.AddNewVehicle = async function (req, res, next) {
     req.body
 
     const regResult = await invModel.AddNewVehicle(
-        classification_name,
+        classification_id,
         inv_make,
         inv_model,
+        inv_year,
         inv_description,
         inv_image,
         inv_thumbnail,
         inv_price,
-        inv_year,
         inv_miles,
         inv_color
     )
@@ -147,10 +152,11 @@ invCont.AddNewVehicle = async function (req, res, next) {
             nav,
             message: `The ${inv_make} ${inv_model} vehicle was successfully added.`,
             errors: null,
+
         })
     } else {
-        const message = `Sorry, the vehicle classification was NOT added.`
-        res.status(501).render("inventory/newClassificationForm.ejs", {
+        const message = `Sorry, the vehicle was NOT added.`
+        res.status(501).render("inventory/newVehicleForm.ejs", {
             title: "Failed to add new Vehicle Classification",
             nav,
             message,

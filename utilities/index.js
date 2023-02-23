@@ -31,7 +31,9 @@ Util.getNav = async function (req, res, next) {
     return nav
 }
 
-
+/* ************************
+ * Builds Detailed View
+ ************************** */
 Util.getDetailedView = async function (inv_id) {
     let data = await invModel.getVehicleByInventoryId(inv_id);
     let detailedView = Util.buildDetailedView(data)
@@ -63,7 +65,9 @@ Util.buildDetailedView = async function (data) {
     return view
 }
 
-// AddNewClassification Function:
+/* ************************
+ * Builds Detailed View
+ ************************** */
 
 Util.AddNewClassification = async function () {
     let data = await invModel.getVehicleByInventoryId(inv_id);
@@ -72,7 +76,29 @@ Util.AddNewClassification = async function () {
 
 }
 
-// AddNewVehicle Function:
+
+/* ************************
+ * Builds Dropdown menu
+ ************************** */
+Util.buildDropdown = function (data) {
+    let list = `<select name="classification_id" id="classification_id">`
+
+    data.rows.forEach((row) => {
+        list += `<option value="${row.classification_id}">${row.classification_name}</option>`
+
+
+    })
+    list += "</select>"
+    return list
+}
+
+
+Util.getDropdown = async function (req, res, next) {
+    let data = await invModel.getClassifications()
+    dropdown = Util.buildDropdown(data)
+    return dropdown
+}
+
 
 
 module.exports = Util

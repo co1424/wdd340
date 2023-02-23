@@ -13,7 +13,7 @@ router.get("/detail/:inv_id", invController.buildVehicle);
 router.get("/management-view", invController.buildManagement);
 
 
-// Route to get to form:
+// Route to get to new classification form:
 router.get("/newClassificationForm.ejs", invController.buildNewClassification);
 
 // Route to get view
@@ -25,7 +25,7 @@ router.post("/AddNewClassification", invController.AddNewClassification);
 router.get("/newVehicleForm.ejs", invController.buildNewVehicle);
 
 // ADD NEW VEHICLE TO INVENTORY
-router.post("/inventory/new-vehicle", invController.AddNewVehicle);
+router.post("/new-vehicle", invController.AddNewVehicle);
 
 
 module.exports = router;
