@@ -66,7 +66,7 @@ invCont.buildNewClassification = async function (req, res, next) {
 
 invCont.buildNewVehicle = async function (req, res, next) {
     let nav = await utilities.getNav();
-    let dropdownMenu = await utilities.getDropdown();
+    let dropdownMenu = await utilities.buildDropdown();
     res.render('inventory/newVehicleForm', {
         title: 'Add New Vehicle',
         nav,

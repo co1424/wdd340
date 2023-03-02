@@ -98,13 +98,4 @@ Util.buildDropdown = async function (classification_id = null) {
 }
 
 
-
-Util.getDropdown = async function (req, res, next) {
-    let data = await invModel.getClassifications()
-    dropdown = Util.buildDropdown(data)
-    return dropdown
-}
-
-
-
 module.exports = Util
