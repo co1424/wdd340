@@ -179,7 +179,7 @@ validate.checkAddNewVehicleData = async (req, res, next) => {
     errors = validationResult(req)
     if (!errors.isEmpty()) {
         let nav = await utilities.getNav()
-        let dropdownMenu = await utilities.getDropdown(classification_id)
+        let dropdownMenu = await utilities.buildDropdown(classification_id)
         res.render("../views/inventory/newVehicleForm.ejs", {
             errors,
             message: null,
