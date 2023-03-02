@@ -8,18 +8,18 @@
             
             
             data.forEach(vehicle => { %> <li> <a class="image-link" href="../../inv/detail/<%= vehicle.inv_id %>"
-                  title="View <%= vehicle.inv_make %> <%= vehicle.inv_model %> details"> <img
+                  title="View <%= vehicle.inv_make %> <%= vehicle.inv_model %> details"><img
                         src="<%= vehicle.inv_thumbnail %>"
                         alt=" Image of <%= vehicle.inv_make %> <%= vehicle.inv_model %> on CSE Motors"
                         id="classification-image"> </a>
             <div class="name-price">
-
+                  <hr />
                   <h2> <a href="../../inv/detail/<%= vehicle.inv_id %>"
                               title="View <%= vehicle.inv_make %> <%= vehicle.inv_model %> details"
                               id="classification-vehicle-name-style">
                               <%= vehicle.inv_make %> <%= vehicle.inv_model %> </a> </h2>
                   <span id="classification-price">Price:
                         $<%= new Intl.NumberFormat('en-US').format(vehicle.inv_price) %></span>
-                  <hr />
+
             </div>
       </li> <% }) %></ul><% } else { %><p class="notice">Sorry, no matching vehicles could be found.</p><% } %>

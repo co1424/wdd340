@@ -6,12 +6,22 @@
 <p class="notice"><%= message %></p>
 <% } %>
 
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <%  }) %>
+</ul>
+<% } %>
+
 
 <form action="AddNewClassification" id="newClassificationForm" method="post">
     <label for="classification_name">Classification Name: * (Name may NOT contain a space or special character of ANY
         kind)</label>
 
-    <input type="text" name="classification_name" id="classification_name" required>
+    <input type="text" name="classification_name" id="classification_name" pattern="^[A-Za-z]+$" required
+        value="<%= locals.classification_name %>">
+    <p>NAME MUST BE ALPHABETIC CHARACTERS ONLY.</p>
     <br>
     <input type="submit" class="submit" value="Add New Classification">
 

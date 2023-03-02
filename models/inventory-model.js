@@ -38,14 +38,15 @@ async function getVehicleByInventoryId(inv_id) {
  *  Create new classification
  * ************************** */
 
-async function AddNewClassification(
-    classification_name
-) {
+async function AddNewClassification(classification_name) {
     try {
         const sql =
             "INSERT INTO public.classification (classification_name) VALUES ($1) RETURNING *"
         return await pool.query(sql, [classification_name]);
+
+
     } catch (error) {
+        console.error('AddNewClassification error at the inventory-model' + error);
         return error.message
     }
 }
@@ -84,9 +85,13 @@ async function AddNewVehicle(
             ]
         );
     } catch (error) {
+        console.error('AddNewVehicle error at the inventory-model' + error);
         return error.message
     }
 }
+
+
+
 
 
 module.exports = {

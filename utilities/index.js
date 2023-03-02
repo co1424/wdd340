@@ -80,17 +80,23 @@ Util.AddNewClassification = async function () {
 /* ************************
  * Builds Dropdown menu
  ************************** */
-Util.buildDropdown = function (data) {
-    let list = `<select name="classification_id" id="classification_id">`
+Util.buildDropdown = async function (classification_id = null) {
+    let data = await invModel.getClassifications()
+    let Classificationlist =
+        '<select name="classification_id" id="classification_id">'
+    Classificationlist += "<option>Choose a Classification</option>"
 
     data.rows.forEach((row) => {
-        list += `<option value="${row.classification_id}">${row.classification_name}</option>`
-
-
+        Classificationlist += '<option value="' + row.classification_id + '"'
+        if (classification_id != null && row.classification_id == classification_id) {
+            Classificationlist += " selected "
+        }
+        Classificationlist += ">" + row.classification_name + "</option>"
     })
-    list += "</select>"
-    return list
+    Classificationlist += "</select>"
+    return Classificationlist
 }
+
 
 
 Util.getDropdown = async function (req, res, next) {

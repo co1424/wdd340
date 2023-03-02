@@ -31,7 +31,8 @@ invCont.buildVehicle = async function (req, res, next) {
         title: `${carMake} ${carModel} ${carYear}`,
         nav,
         data,
-        message: null
+        message: null,
+        errors: null,
 
     })
 
@@ -58,6 +59,7 @@ invCont.buildNewClassification = async function (req, res, next) {
         title: 'Add New Classification View',
         nav,
         message: null,
+        errors: null,
     })
 }
 
@@ -68,6 +70,7 @@ invCont.buildNewVehicle = async function (req, res, next) {
     res.render('inventory/newVehicleForm', {
         title: 'Add New Vehicle',
         nav,
+        errors: null,
         message: null,
         dropdownMenu,
 
@@ -80,12 +83,12 @@ invCont.buildNewVehicle = async function (req, res, next) {
  **************************************** */
 
 invCont.AddNewClassification = async function (req, res, next) {
-    let nav = await utilities.getNav();
+
     const {
         classification_name
     } =
     req.body
-
+    let nav = await utilities.getNav();
     const regResult = await invModel.AddNewClassification(
         classification_name
     )
@@ -96,17 +99,22 @@ invCont.AddNewClassification = async function (req, res, next) {
             nav,
             message: `The ${classification_name} vehicle classification was successfully added.`,
             errors: null,
+            addNewClassification,
         })
     } else {
         const message = `Sorry, the vehicle classification was NOT added.`
-        res.status(501).render("inventory/newClassificationForm.ejs", {
+        res.status(501).render("./inventory/newClassificationForm.ejs", {
             title: "Failed to add new Vehicle Classification",
             nav,
             message,
             errors: null,
+            addNewClassification,
+
 
         })
     }
+
+
 }
 
 /* ****************************************
@@ -115,7 +123,6 @@ invCont.AddNewClassification = async function (req, res, next) {
 
 invCont.AddNewVehicle = async function (req, res, next) {
     let nav = await utilities.getNav();
-
 
     const {
         classification_id,
@@ -146,21 +153,28 @@ invCont.AddNewVehicle = async function (req, res, next) {
     )
     console.log(regResult)
 
+    let AddNewVehicle = "../../inventory/new-vehicle";
+    let AddNewClassification = "../../inventory/newClassificationForm"
+
     if (regResult) {
         res.status(201).render("./inventory/management-view.ejs", {
             title: "Add New Vehicle Classification",
             nav,
             message: `The ${inv_make} ${inv_model} vehicle was successfully added.`,
             errors: null,
+            AddNewVehicle,
+            AddNewClassification,
 
         })
     } else {
         const message = `Sorry, the vehicle was NOT added.`
-        res.status(501).render("inventory/newVehicleForm.ejs", {
-            title: "Failed to add new Vehicle Classification",
+        res.status(501).render("inventory/new-vehicle", {
+            title: "Failed to add new Vehicle",
             nav,
             message,
             errors: null,
+            AddNewVehicle,
+            AddNewClassification,
 
         })
     }

@@ -6,18 +6,29 @@
 <p class="notice"><%= message %></p>
 <% } %>
 
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <%  }) %>
+</ul>
+<% } %>
+
 <div>
 
     <form action="/client/register" method="post" id="registerForm">
         <label for="client_firstname">First Name *</label>
-        <input type="text" name="client_firstname" id="client_firstname" required>
+        <input type="text" name="client_firstname" id="client_firstname" required
+            value="<%= locals.client_firstname %>">
         <label for="client_lastname">Last Name *</label>
-        <input type="text" name="client_lastname" id="client_lastname" required>
+        <input type="text" name="client_lastname" id="client_lastname" required value="<%= locals.client_lastname %>">
         <label for="client_email">Email *</label>
-        <input type="email" name="client_email" id="client_email" required>
+        <input type="email" name="client_email" id="client_email" required value="<%= locals.client_email %>">
         <label for="client_password">Password *</label>
+        <span>Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special
+            character</span>
         <input id="client_password" type="password" name="client_password" required
-            pattern="(?=^.{12,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
         <br>
         <input type="submit" value="Register">
         <!-- An element to toggle between password visibility -->

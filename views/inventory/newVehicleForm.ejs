@@ -6,6 +6,14 @@
 <p class="notice"><%= message %></p>
 <% } %>
 
+<% if (errors) { %>
+<ul class="notice">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <%  }) %>
+</ul>
+<% } %>
+
 <div>
 
     <form action="new-vehicle" id="newVehicleForm" method="post">
@@ -15,36 +23,45 @@
         <br>
         <br>
         <label for="inv_make">Make *</label>
-        <input type="text" name="inv_make" id="inv_make" required>
+        <input type="text" name="inv_make" id="inv_make" placeholder="e.g. Hyundai" pattern="^[A-Za-z\s]{1,20}$"
+            value="<%= locals.inv_make %>" required>
         <br>
         <label for="inv_model">Model *</label>
-        <input type="text" name="inv_model" id="inv_model" required>
+        <input type="text" name="inv_model" id="inv_model" placeholder="e.g. Accent" pattern="^[A-Za-z0-9\s]{1,20}$"
+            value="<%= locals.inv_model %>" required>
         <br>
         <label for="inv_year">Year *</label>
-        <input type="text" name="inv_year" id="inv_year" required>
+        <input type="text" name="inv_year" id="inv_year" placeholder="e.g. 2022" pattern="^[0-9]{4}$"
+            value="<%= locals.inv_year %>" required>
         <br>
         <br>
 
         <label for="inv_description">Description *</label>
-        <textarea name="inv_description" id="inv_description" cols="40" rows="5"></textarea>
-        <br>
+        <textarea name="inv_description" id="inv_description" cols="40" rows="4"
+            placeholder="e.g. This mid-size sedan is the perfect fit for a small family. MPG is amazing!"
+            required><%= locals.inv_description %></textarea> <br>
         <br>
         <label for="inv_image">Image Path *</label>
-        <input type="text" name="inv_image" id="inv_image" value="/images/vehicles/no-image.png" required>
+        <input type="text" name="inv_image" id="inv_image" value="/images/vehicles/no-image.png"
+            pattern="^[\/a-zA-Z0-9%\$\.\-]+" required>
         <br>
         <label for="inv_thumbnail">Thumbnail Path *</label>
-        <input type="text" name="inv_thumbnail" id="inv_thumbnail" value="/images/vehicles/no-image-tn.png" required>
+        <input type="text" name="inv_thumbnail" id="inv_thumbnail" value="/images/vehicles/no-image-tn.png"
+            pattern="^[\/a-zA-Z0-9%\$\.\-]+" required>
         <br>
         <label for="inv_price">Price *</label>
-        <input type="text" name="inv_price" id="inv_price" required>
+        <input type="text" name="inv_price" id="inv_price" placeholder="e.g. 21000" value="<%= locals.inv_price %>"
+            pattern="^\d+\.?\d*$" required>
 
         <br>
 
         <label for="inv_miles">Miles</label>
-        <input type="text" name="inv_miles" id="inv_miles" required>
+        <input type="text" name="inv_miles" id="inv_miles" placeholder="e.g. 100000" value="<%= locals.inv_miles %>"
+            pattern="^[0-9]{1,6}$" required>
         <br>
         <label for="inv_color">Color</label>
-        <input type="text" name="inv_color" id="inv_color">
+        <input type="text" name="inv_color" id="inv_color" placeholder="e.g. Admiral Blue"
+            value="<%= locals.inv_color %>" pattern="^[A-Za-z\s]{1,20}$" required>
         <br>
         <br>
         <input type="submit" value="Add Vehicle" id="button">
