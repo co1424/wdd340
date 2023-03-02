@@ -77,7 +77,7 @@ Util.AddNewClassification = async function () {
 }
 
 
-/* ************************
+/* *************************
  * Builds Dropdown menu
  ************************** */
 Util.buildDropdown = async function (classification_id = null) {
